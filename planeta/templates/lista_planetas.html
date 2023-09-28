@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Planetas</title>
+</head>
+<body>
+    <h1>Lista de Planetas</h1>
+    <ul>
+        {% for planeta in planetas %}
+            <li>{{ planeta.nome }}</li>
+        {% empty %}
+            <li>Nenhum planeta encontrado.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'criar_planeta' %}" class="btn btn-primary">Criar Novo Planeta</a>
+</body>
+</html>

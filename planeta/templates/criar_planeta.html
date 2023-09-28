@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Criar Planeta</title>
+</head>
+<body>
+    <h1>Criar um Novo Planeta</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'lista_planetas' %}">Voltar para a Lista de Planetas</a>
+</body>
+</html>
