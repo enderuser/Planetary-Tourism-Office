@@ -1,5 +1,5 @@
 from django import forms
-from .models import Planeta, DistanciaEntrePlanetas
+from .models import Planeta, Distancia
 
 class PlanetaForm(forms.ModelForm):
     class Meta:
@@ -13,7 +13,7 @@ class PlanetaForm(forms.ModelForm):
 
 class DistanciaForm(forms.ModelForm):
     class Meta:
-        model = DistanciaEntrePlanetas
+        model = Distancia
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):

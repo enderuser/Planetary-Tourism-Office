@@ -1,17 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Lista de Planetas</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Lista de Planetas{% endblock title %}
+
+{% block main %}
+<div class="container"><br>
+    <br>
     <h1>Lista de Planetas</h1>
-    <ul>
-        {% for planeta in planetas %}
-            <li>{{ planeta.nome }}</li>
-        {% empty %}
-            <li>Nenhum planeta encontrado.</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'criar_planeta' %}" class="btn btn-primary">Criar Novo Planeta</a>
-</body>
-</html>
+    <hr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nome do Planeta</th>
+                <th>Diametro do Planeta</th>
+                <th>Massa do Planeta</th>
+                <th>Distancia do Sol</th>
+                <th>Periodo Orbital</th>
+                <th>Temperatura Media</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for planeta in planetas %}
+                <tr>
+                    <td>{{ planeta.nome }}</td>
+                    <td>{{ planeta.diametro_km }}</td>
+                    <td>{{ planeta.massa_kg }}</td>
+                    <td>{{ planeta.distancia_media_ao_sol_km }}</td>
+                    <td>{{ planeta.periodo_orbital_dias }} Dias Terrestres</td>
+                    <td>{{ planeta.temperatura_media_celsius }} Graus Celsius</td>
+                    <td>
+                        <a href="#"><span class="badge text-bg-primary">Detalhes</span><a/>
+                        <a href="#"><span class="badge text-bg-warning">Editar</span><a/>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="1">Nenhum planeta encontrado.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'criar_planeta' %}" class="btn btn-success">Cadastrar Novo Planeta</a>
+</div>
+{% endblock main %}
+
+
+

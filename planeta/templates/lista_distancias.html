@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Lista de Distâncias Entre Planetas</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Distâncias Entre Planetas{% endblock title %}
+
+{% block main %}
+<div class="container">
     <h1>Lista de Distâncias Entre Planetas</h1>
-    
-    <table class="table table-striped">
+        
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Planeta de Origem</th>
@@ -28,7 +27,9 @@
             {% endfor %}
         </tbody>
     </table>
-    
+
     <a href="{% url 'criar_distancia' %}" class="btn btn-primary">Criar Nova Distância</a>
-</body>
-</html>
+</div>
+{% endblock main %}
+
+

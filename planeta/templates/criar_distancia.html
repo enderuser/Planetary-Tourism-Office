@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Criar Nova Distância Entre Planetas</title>
-</head>
-<body>
-    <h1>Criar Nova Distância Entre Planetas</h1>
-    
+{% extends "base.html" %}
+{% block title %}Criar Nova Distância{% endblock title %}
+
+{% block main %}
+<div class="container"><br>
+    <br>
+    <h1>Cadastrar Nova Distância Entre Planetas</h1>
+    <hr>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{% url 'lista_distancias' %}" class="btn btn-secondary">Voltar para a Lista</a>
     </form>
+</div>
+{% endblock main %}
+
+
     
-    <a href="{% url 'lista_distancias' %}" class="btn btn-secondary">Voltar para a Lista</a>
-</body>
-</html>
+    
+

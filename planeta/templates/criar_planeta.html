@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Criar Planeta</title>
-</head>
-<body>
-    <h1>Criar um Novo Planeta</h1>
+{% extends "base.html" %}
+{% block title %}Cadastrar Planeta{% endblock title %}
+
+{% block main %}
+<div class="container"><br>
+    <br>
+    <h1>Cadastrar um Novo Planeta</h1>
+    <hr>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Salvar</button>
+        <button class="btn btn-primary" type="submit">Salvar</button>
+        <a class="btn btn-warning" href="{% url 'lista_planetas' %}">Voltar para a Lista de Planetas</a>
     </form>
-    <a href="{% url 'lista_planetas' %}">Voltar para a Lista de Planetas</a>
-</body>
-</html>
+    
+</div>
+{% endblock main %}
+

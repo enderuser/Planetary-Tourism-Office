@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Planeta, DistanciaEntrePlanetas
+from .models import Planeta, Distancia
 from .forms import PlanetaForm, DistanciaForm
 
 def criar_planeta(request):
@@ -22,7 +22,7 @@ def criar_distancia(request):
         form = DistanciaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('lista_distancias')  # Redireciona para a lista de distâncias após a criação bem-sucedida
+            return redirect('lista_distancias')
     else:
         form = DistanciaForm()
 
