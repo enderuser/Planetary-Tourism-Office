@@ -54,19 +54,23 @@ def create_travel(request):
 
     return render(request, 'create_travel.html', {'form': form})
 
+def detail_travel(request, travel_id):
+    viagem = get_object_or_404(Travel, id=travel_id)
+    return render(request, 'detail_travel.html', {'viagem': viagem})
+
 def search_trips(request):
     if request.method == 'POST':
-        form = PesquisaViagemForm(request.POST)
-        if form.is_valid():
-            departure = form.cleaned_data['departure']
-            arriving = form.cleaned_data['arriving']
-            data = form.cleaned_data['data']
+        
+        departure_id = request.POST.get('departure')
+        arriving_id = request.POST.get('arriving')
+        data = request.POST.get('data')
 
-            viagens = Travel.objects.filter(departure=departure, arriving=arriving, data=data)
-            
-            return render(request, 'results_search.html', {'viagens': viagens, 'form': form})
+        viagens = Travel.objects.filter(departure_id=departure_id, arriving_id=arriving_id, data=data)
+        
+        return render(request, 'results_search.html', {'viagens': viagens})
 
     else:
         form = PesquisaViagemForm()
 
     return render(request, 'search_trips.html', {'form': form})
+

@@ -2,12 +2,69 @@
 {% block 'title' %}Search Trips{% endblock %}
 
 {% block 'body' %}
-<h1>Search Trips</h1>
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+<h1>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    </svg>
+    Search Trips
+</h1>
 <hr>
-<form method="post" action="{% url 'search_trips' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-primary" type="submit">Pesquisar</button>
-</form>
+<!--BUSCADOR COMEÇA AQUI-->
+<form method="post" action="{% url 'search_trips' %}">{% csrf_token %}
+<div class="row g-2">
+    <div class="col-md-4">
+        <div class="form-floating">
+            <select class="form-select" name="departure" required id="id_departure" aria-label="Floating label select example">
+              <option selected>Open this select menu...</option>
+              <option value="1">Mercury</option>
+              <option value="2">Venus</option>
+              <option value="3">Earth</option>
+              <option value="4">Mars</option>
+              <option value="5">Jupiter</option>
+              <option value="6">Saturn</option>
+              <option value="7">Uranus</option>
+              <option value="8">Neptune</option>
+              <option value="9">Pluto</option>
+            </select>
+            <label for="id_departure">Departure (Planet)</label>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-floating">
+            <select class="form-select" name="arriving" required id="id_arriving" aria-label="Floating label select example">
+              <option selected>Open this select menu...</option>
+              <option value="1">Mercury</option>
+              <option value="2">Venus</option>
+              <option value="3">Earth</option>
+              <option value="4">Mars</option>
+              <option value="5">Jupiter</option>
+              <option value="6">Saturn</option>
+              <option value="7">Uranus</option>
+              <option value="8">Neptune</option>
+              <option value="9">Pluto</option>
+            </select>
+            <label for="id_arriving">Arriving (Planet)</label>
+        </div>
+    </div>
 
+    <div class="col-md-2">
+        <div class="form-floating">
+        <select class="form-select" name="data" required id="id_data">
+            <option value="2023-10-09">
+            2023-10-09
+            </option>
+        </select>
+        <label for="id_data">Travel Date</label>            
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-lg btn-primary">Search</button>
+        </div>
+    </div>
+    </div>
+    <!--BUSCADOR TERMINA AQUI-->
+</form>
+</div>
 {% endblock %}

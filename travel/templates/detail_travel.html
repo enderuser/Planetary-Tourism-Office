@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block 'title' %}
+    Details of Travel
+{% endblock %}
+
+{% block 'body' %}
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h1>Travel Details</h1>
+    <hr>
+
+    <h3>Departure: {{ viagem.departure }}</h3>
+    <h3>Arriving: {{ viagem.arriving }}</h3>
+    <h3>Date: {{ viagem.data }}</h3>
+    <h3>Time: {{ viagem.time }}</h3>
+
+    <h2>Itinerary</h2>
+    <p>{{ viagem.itinerary }}</p>
+
+    <h2>Places to Visit</h2>
+    <p>{{ viagem.places_to_visit }}</p>
+
+    <h2>Recommendations</h2>
+    <p>{{ viagem.recommendations }}</p>
+
+    <a class="btn btn-primary" href="{% url 'search_trips' %}">Back to Travels List</a>
+</div>
+{% endblock %}

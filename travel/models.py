@@ -27,7 +27,10 @@ class Travel(models.Model):
     arriving = models.ForeignKey(Planet, on_delete=models.DO_NOTHING, related_name='trips_of_arriving')
     data = models.DateField()
     time = models.TimeField()
-
+    itinerary = models.TextField(blank=True, null=True)
+    places_to_visit = models.TextField(blank=True, null=True)
+    recommendations = models.TextField(blank=True, null=True)
+    
     def __str__(self):
         return f'Travel departure {self.departure} for {self.arriving} a {self.data} the {self.time}'
 
