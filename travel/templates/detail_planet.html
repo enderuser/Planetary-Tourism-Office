@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block 'title' %}Detalhes do Planeta: {{ planeta.name }}{% endblock %}
+
+{% block 'body' %}
+<h1>Detalhes do Planeta: {{ planeta.name }}</h1>
+<hr>
+
+<p><strong>Nome:</strong> {{ planeta.name }}</p>
+<p><strong>Diâmetro (km):</strong> {{ planeta.diametro_km }}</p>
+<p><strong>Massa (kg):</strong> {{ planeta.massa_kg }}</p>
+<p><strong>Distância Média ao Sol (km):</strong> {{ planeta.distancia_media_ao_sol_km }}</p>
+<p><strong>Período Orbital (dias):</strong> {{ planeta.periodo_orbital_dias }}</p>
+<p><strong>Temperatura Média (°C):</strong> {{ planeta.temperatura_media_celsius }}</p>
+<p><strong>Descrição:</strong> {{ planeta.descricao }}</p>
+<hr>
+<a class="btn btn-secondary" href="{% url 'list_planets' %}">Voltar para a Lista de Planetas</a>
+{% endblock %}

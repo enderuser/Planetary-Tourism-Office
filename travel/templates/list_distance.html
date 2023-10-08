@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block 'title' %}List Itineraries{% endblock %}
+
+{% block 'body' %}
+<h1>List of Itineraries</h1>
+<hr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Planeta de Origem</th>
+            <th>Planeta de Destino</th>
+            <th>Distância (km)</th>
+            <th>Tarifa $</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for distance in distances %}
+            <tr>
+                <td>{{ distance.planeta_origem.name }}</td>
+                <td>{{ distance.planeta_destino.name }}</td>
+                <td>{{ distance.distancia_km }}</td>
+                <td>{{ distance.tarifa }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="3">Nenhuma distância cadastrada.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<hr>
+<nav aria-label="...">
+  <ul class="pagination">
+    {% if distances.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1" tabindex="-1" aria-disabled="true">Primeira</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ distances.previous_page_number }}">Anterior</a>
+      </li>
+    {% endif %}
+    
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">{{ distances.number }}</span>
+    </li>
+    
+    {% if distances.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ distances.next_page_number }}">Próxima</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ distances.paginator.num_pages }}">Última</a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+<hr>
+<a href="{% url 'create_distance' %}" class="btn btn-success">Insert a New Itinerarie</a>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block 'title' %}Available Trips{% endblock %}
+
+{% block 'body' %}
+<h1>Available Trips in between Planets</h1>
+<hr>
+
+{% if viagens %}
+<table class="table table-hover">
+    <tr>
+        <th>Origem</th>
+        <th>Destino</th>
+        <th>Data</th>
+        <th>Horário</th>
+    </tr>
+    {% for viagem in viagens %}
+        <tr>
+            <td>{{ viagem.departure }}</td>
+            <td>{{ viagem.arriving }}</td>
+            <td>{{ viagem.data }}</td>
+            <td>{{ viagem.time }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="4">Nenhuma viagem encontrada para os critérios de pesquisa.</td>
+        </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Nenhuma viagem encontrada para os critérios de pesquisa.</p>
+{% endif %}
+
+<a class="btn btn-primary" href="{% url 'search_trips' %}">Nova Pesquisa</a>
+
+{% endblock %}
