@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PlanetForm, DistanciaForm, PesquisaViagemForm, TravelForm
 from .models import Planet, DistanciaEntrePlanetas, Travel
 from django.core.paginator import Paginator
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def create_planet(request):
     if request.method == 'POST':
         form = PlanetForm(request.POST)
@@ -14,15 +16,18 @@ def create_planet(request):
 
     return render(request, 'create_planets.html', {'form': form})
 
+@csrf_exempt
 def list_planets(request):
     planets = Planet.objects.all()
     return render(request, 'list_planets.html', {'planets': planets})
 
+@csrf_exempt
 def detail_planet(request, pk):
     planeta = get_object_or_404(Planet, pk=pk)
 
     return render(request, 'detail_planet.html', {'planeta': planeta})
 
+@csrf_exempt
 def list_distances(request):
     distances = DistanciaEntrePlanetas.objects.all()
 
@@ -33,6 +38,7 @@ def list_distances(request):
 
     return render(request, 'list_distance.html', {'distances': distances})
 
+@csrf_exempt
 def create_distance(request):
     if request.method == 'POST':
         form = DistanciaForm(request.POST)
@@ -44,6 +50,7 @@ def create_distance(request):
 
     return render(request, 'create_distance.html', {'form': form})
 
+@csrf_exempt
 def create_travel(request):
     if request.method == 'POST':
         form = TravelForm(request.POST)
@@ -54,10 +61,12 @@ def create_travel(request):
 
     return render(request, 'create_travel.html', {'form': form})
 
+@csrf_exempt
 def detail_travel(request, travel_id):
     viagem = get_object_or_404(Travel, id=travel_id)
     return render(request, 'detail_travel.html', {'viagem': viagem})
 
+@csrf_exempt
 def search_trips(request):
     if request.method == 'POST':
         
@@ -74,6 +83,7 @@ def search_trips(request):
 
     return render(request, 'search_trips.html', {'form': form})
 
+@csrf_exempt
 def search_earth_trips(request):
 
     departure_earth_id = 3
