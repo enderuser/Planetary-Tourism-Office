@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
-{% block 'title' %}Detalhes do Planeta: {{ planeta.name }}{% endblock %}
+{% block 'title' %}Planet Details: {{ planeta.name }}{% endblock %}
 
 {% block 'body' %}
-<h1>Detalhes do Planeta: {{ planeta.name }}</h1>
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+<h1>Planet Details: {{ planeta.name }}</h1>
 <hr>
 
 <p><strong>Nome:</strong> {{ planeta.name }}</p>
@@ -14,5 +15,6 @@
 <p><strong>Temperatura Média (°C):</strong> {{ planeta.temperatura_media_celsius }}</p>
 <p><strong>Descrição:</strong> {{ planeta.descricao }}</p>
 <hr>
-<a class="btn btn-secondary" href="{% url 'list_planets' %}">Voltar para a Lista de Planetas</a>
+<a class="btn btn-secondary" href="{% url 'list_planets' %}">Return to Planets list</a>
+</div>
 {% endblock %}

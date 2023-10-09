@@ -10,5 +10,6 @@ urlpatterns = [
     path('create_travel/', views.create_travel, name='create_travel'),
     path('travel/<int:travel_id>/', views.detail_travel, name='detail_travel'),
     path('', views.search_trips, name='search_trips'),
+    path('search_earth_trips/', views.search_earth_trips, name='search_earth_trips'),
     path('planet/<int:pk>/', views.detail_planet, name='detail_planet'),
 ]

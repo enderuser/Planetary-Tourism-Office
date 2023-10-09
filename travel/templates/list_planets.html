@@ -2,6 +2,7 @@
 {% block 'title' %}List Planets{% endblock %}
 
 {% block 'body' %}
+<div class="my-3 p-3 bg-body rounded shadow-sm">
 <h1>List of Planets</h1>
 <hr>
 <table class="table table-hover">
@@ -32,5 +33,17 @@
         {% endfor %}
     </tbody>
 </table>
-<a href="{% url 'create_planet' %}" class="btn btn-success">Isert a New Planet</a>
+<a href="{% url 'search_trips' %}" class="btn btn-success">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    </svg>
+    Travel between Planets
+</a>
+<a href="{% url 'search_earth_trips' %}" class="btn btn-secondary">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    </svg>
+    Travel Earth Departure
+</a>
+</div>
 {% endblock %}

@@ -74,3 +74,10 @@ def search_trips(request):
 
     return render(request, 'search_trips.html', {'form': form})
 
+def search_earth_trips(request):
+
+    departure_earth_id = 3
+
+    viagens = Travel.objects.filter(departure_id=departure_earth_id)
+    
+    return render(request, 'search_departure.html', {'viagens': viagens})
