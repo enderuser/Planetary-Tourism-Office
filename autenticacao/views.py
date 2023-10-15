@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import re
+from .utils import password_is_valid
+from django.shortcuts import redirect
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.messages import constants
 
@@ -13,7 +15,24 @@ def cadastro(request):
         email = request.POST.get('email')
         confirmar_senha = request.POST.get('confirmar_senha')
         
-        return HttpResponse(confirmar_senha)
+        if not password_is_valid(request, senha, confirmar_senha):
+            return redirect('/auth/cadastro')
+        
+        try:
+            user = User.objects.create_user(username=username,
+                                            email=email,
+                                            password=senha,
+                                            is_active=False)
+            user.save()
+            messages.add_message(request, constants.SUCCESS, 'Usuario Cadastrado com Sucesso')
+            return redirect('/auth/logar')
+        except:
+            messages.add_message(request, constants.ERROR, 'Erro interno do Sistema')
+            return redirect('/auth/cadastro')
 
 def logar(request):
-    pass
+    if request.method == "GET":
+        return render(request, 'login.html')
+    elif request.method == "POST":
+        username = request.POST.get('usuario')
+        senha = request.POST.get('senha')
