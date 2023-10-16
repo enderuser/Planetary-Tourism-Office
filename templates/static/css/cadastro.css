@@ -1,5 +1,5 @@
 .sidebar{
-    background-color: #27DB8F;
+    background-color: #00235d;
     height: 100vh;
     }
     .logo_sidebar{
@@ -41,7 +41,7 @@
     border: none;
     padding: 5px 15px 5px 15px;
     font-size: 25px;
-    background-color: #27DB8F;
+    background-color: #00235d;
     color: white;
     font-weight: bold;
     }

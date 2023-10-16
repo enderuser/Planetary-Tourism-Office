@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .utils import password_is_valid
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
-from django.contrib import messages
+from django.contrib import messages, auth
 from django.contrib.messages import constants
 
 def cadastro(request):
@@ -36,3 +36,10 @@ def logar(request):
     elif request.method == "POST":
         username = request.POST.get('usuario')
         senha = request.POST.get('senha')
+        usuario = auth.authenticate(username=username, password=senha)
+    if not usuario:
+        messages.add_message(request, constants.ERROR, 'Username ou senha inválidos')
+        return redirect('/auth/logar')
+    else:
+        auth.login(request, usuario)
+        return redirect('/')
