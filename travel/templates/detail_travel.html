@@ -1,10 +1,14 @@
-{% extends "base.html" %}
-
+{% extends "baselogin.html" %}
+{% load static %}
 {% block 'title' %}
     Details of Travel
 {% endblock %}
-
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static './css/cadastro.css' %}">
+{% endblock %}
 {% block 'body' %}
+<div class="col-md-9">
+<div class="area_cadastrar">
 <div class="my-3 p-3 bg-body rounded shadow-sm">
     <h1>Travel Details</h1>
     <hr>
@@ -24,5 +28,7 @@
     <p>{{ viagem.recommendations }}</p>
 
     <a class="btn btn-primary" href="{% url 'search_trips' %}">Back to Travels List</a>
+</div>
+</div>
 </div>
 {% endblock %}
